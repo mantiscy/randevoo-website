@@ -35,7 +35,7 @@ async function handle(request, env) {
         'Content-Type': 'application/json',
         'apikey': env.SUPABASE_ANON_KEY,
         'Authorization': `Bearer ${env.SUPABASE_ANON_KEY}`,
-        'Prefer': 'resolution=ignore-duplicates',
+        'Prefer': 'resolution=ignore-duplicates,return=minimal',
       },
       body: JSON.stringify({ email, device_type: device }),
     });
