@@ -35,14 +35,15 @@ async function handle(request, env) {
         'Content-Type': 'application/json',
         'apikey': env.SUPABASE_ANON_KEY,
         'Authorization': `Bearer ${env.SUPABASE_ANON_KEY}`,
-        'Prefer': 'resolution=ignore-duplicates,return=minimal',
+        'Prefer': 'return=minimal',
       },
       body: JSON.stringify({ email, device_type: device }),
     });
 
     if (!supabaseRes.ok && supabaseRes.status !== 409) {
       const errText = await supabaseRes.text();
-      return json({ error: 'Database error', detail: errText, status: supabaseRes.status }, 500);
+      console.error('Supabase error:', errText);
+      return json({ error: 'Database error' }, 500);
     }
 
     await fetch('https://api.resend.com/emails', {
