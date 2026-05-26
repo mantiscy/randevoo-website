@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Randevoo – Coming Soon</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px 80px;
+  }
+
+  .container {
+    max-width: 480px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .logo-mark {
+    width: 88px;
+    height: 88px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    object-fit: cover;
+  }
+
+  .wordmark {
+    font-size: 42px;
+    font-weight: 700;
+    color: #C2412C;
+    letter-spacing: 0px;
+    line-height: 1;
+    margin-bottom: 32px;
+  }
+
+  .badge {
+    display: inline-block;
+    background: #FFF0EE;
+    color: #C2412C;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  .headline {
+    font-size: 34px;
+    font-weight: 800;
+    color: #1a1a1a;
+    letter-spacing: -0.8px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .subheadline {
+    font-size: 16px;
+    font-weight: 400;
+    color: #666;
+    line-height: 1.6;
+    max-width: 380px;
+    margin-bottom: 40px;
+  }
+
+  .form-section {
+    width: 100%;
+    background: #fafafa;
+    border: 1.5px solid #f0f0f0;
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .form-label {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-align: center;
+  }
+
+  .email-input {
+    width: 100%;
+    padding: 16px 20px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px;
+    border: 1.5px solid #e5e5e5;
+    border-radius: 14px;
+    outline: none;
+    color: #1a1a1a;
+    background: #fff;
+    transition: border-color 0.2s;
+  }
+
+  .email-input:focus {
+    border-color: #F47565;
+  }
+
+  .email-input::placeholder {
+    color: #aaa;
+  }
+
+  .device-toggle {
+    display: flex;
+    width: 100%;
+    background: #ebebeb;
+    border-radius: 10px;
+    padding: 3px;
+  }
+
+  .device-btn {
+    flex: 1;
+    padding: 10px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #888;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .device-btn.active {
+    background: #ffffff;
+    color: #C2412C;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+
+  .cta-btn {
+    width: 100%;
+    padding: 16px 20px;
+    background: #C2412C;
+    color: white;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    letter-spacing: -0.2px;
+    box-shadow: 0 4px 16px rgba(194, 65, 44, 0.3);
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  .cta-btn:hover {
+    background: #A8361F;
+    transform: translateY(-1px);
+  }
+
+  .cta-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .fine-print {
+    font-size: 13px;
+    color: #aaa;
+    text-align: center;
+  }
+
+  .error-msg {
+    font-size: 13px;
+    color: #C2412C;
+    text-align: center;
+  }
+
+  .success-card {
+    width: 100%;
+    background: #fafafa;
+    border: 1.5px solid #f0f0f0;
+    border-radius: 20px;
+    padding: 40px 24px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .success-icon {
+    font-size: 36px;
+    margin-bottom: 4px;
+  }
+
+  .success-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .success-body {
+    font-size: 14px;
+    color: #888;
+    line-height: 1.5;
+  }
+
+  .divider {
+    width: 40px;
+    height: 2px;
+    background: #f0f0f0;
+    border-radius: 2px;
+    margin: 40px 0 32px;
+  }
+
+  .tagline-row {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #888;
+  }
+
+  .pill-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #F47565;
+    flex-shrink: 0;
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 20px;
+    font-size: 12px;
+    color: #bbb;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 24px;
+  }
+
+  .footer-sep { color: #ddd; }
+
+  .footer-link {
+    color: #bbb;
+    text-decoration: none;
+  }
+
+  .footer-link:hover {
+    color: #888;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <img src="/assets/randevoo-logo.png" class="logo-mark" alt="Randevoo" />
+  <div class="wordmark">Randevoo</div>
+
+  <div class="badge">Coming soon</div>
+
+  <h1 class="headline">A new way to go<br>on first dates.</h1>
+
+  <p class="subheadline">
+    Instead of swiping on profiles, you browse real date ideas posted by people nearby.
+    Find one you love — and go on the date.
+  </p>
+
+  <div class="form-section" id="form-card">
+    <p class="form-label">Do you want to join the Beta?</p>
+    <input class="email-input" id="email-input" type="email" placeholder="Enter your email address" />
+    <div class="device-toggle">
+      <button class="device-btn active" onclick="selectDevice(this, 'ios')">iOS</button>
+      <button class="device-btn" onclick="selectDevice(this, 'android')">Android</button>
+    </div>
+    <button class="cta-btn" id="submit-btn" onclick="submitForm()">Request to join the beta →</button>
+    <p class="fine-print">We'll be in touch. No spam, ever.</p>
+    <p class="error-msg" id="error-msg" style="display:none;"></p>
+  </div>
+
+  <div class="success-card" id="success-card">
+    <div class="success-icon">🎉</div>
+    <p class="success-title">You're on the list!</p>
+    <p class="success-body">We'll be in touch as soon as the beta is ready.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="tagline-row">
+    <div class="pill"><div class="pill-dot"></div>Available on iOS</div>
+    <div class="pill"><div class="pill-dot"></div>Available on Android</div>
+    <div class="pill"><div class="pill-dot"></div>Launching in Cyprus</div>
+  </div>
+</div>
+
+<div class="footer">
+  <span>© 2026 Randevoo</span>
+  <span class="footer-sep">·</span>
+  <a href="/privacy" class="footer-link">Privacy Policy</a>
+  <span class="footer-sep">·</span>
+  <a href="/terms" class="footer-link">Terms</a>
+  <span class="footer-sep">·</span>
+  <a href="/support" class="footer-link">Support</a>
+  <span class="footer-sep">·</span>
+  <a href="/account-deletion" class="footer-link">Account Deletion</a>
+</div>
+
+<script>
+  let selectedDevice = 'ios';
+
+  function selectDevice(btn, device) {
+    document.querySelectorAll('.device-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedDevice = device;
+  }
+
+  async function submitForm() {
+    const email = document.getElementById('email-input').value.trim();
+    const errorEl = document.getElementById('error-msg');
+    const submitBtn = document.getElementById('submit-btn');
+
+    errorEl.style.display = 'none';
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errorEl.textContent = 'Please enter a valid email address.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    try {
+      const res = await fetch('/api/beta-signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, device: selectedDevice }),
+      });
+
+      if (!res.ok) throw new Error('Server error');
+
+      document.getElementById('form-card').style.display = 'none';
+      document.getElementById('success-card').style.display = 'flex';
+    } catch {
+      errorEl.textContent = 'Something went wrong. Please try again.';
+      errorEl.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Request to join the beta →';
+    }
+  }
+</script>
+</body>
+</html>
