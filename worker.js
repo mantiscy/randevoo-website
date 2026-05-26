@@ -42,8 +42,7 @@ async function handle(request, env) {
 
     if (!supabaseRes.ok && supabaseRes.status !== 409) {
       const errText = await supabaseRes.text();
-      console.error('Supabase error:', errText);
-      return json({ error: 'Database error' }, 500);
+      return json({ error: 'Database error', detail: errText, status: supabaseRes.status }, 500);
     }
 
     await fetch('https://api.resend.com/emails', {
